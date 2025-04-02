@@ -1,0 +1,132 @@
+<!-- LOGIN MODAL (Auto Opens on Page Load) -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+      <h2>Welcome Back!</h2>
+      <p>Please log in to continue</p>
+  
+      <form onsubmit="return loginUser()">
+        <label for="email">Email</label>
+        <input type="email" id="email" value="jiffinarodrigues@gmail.com" required>
+  
+        <label for="password">Password</label>
+        <input type="password" id="password" value="User@123" required>
+  
+        <p id="errorMessage" class="error-message"></p>
+  
+        <button type="submit" class="submit-btn">Login</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- STYLES -->
+  <style>
+  /* Fullscreen Background */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url('images/team.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Modal Box */
+  .modal {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Glassmorphism Modal Content */
+  .modal-content {
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+  }
+  
+  /* Input fields */
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  /* Placeholder Styling */
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: #ff4d4d;
+    font-size: 14px;
+    display: none;
+    margin-top: 5px;
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .submit-btn:hover {
+    background: linear-gradient(135deg, #5d0bbd, #1d69db);
+    transition: 0.3s;
+  }
+  </style>
+  
+  <!-- JAVASCRIPT -->
+  <script>
+  // Automatically opens the modal when the page loads
+  window.onload = function() {
+    document.getElementById("loginModal").style.display = "flex";
+  };
+  
+  // Login function (shows error inside modal)
+  function loginUser() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let errorMessage = document.getElementById("errorMessage");
+  
+    // Check credentials
+    if (email === "jiffinarodrigues@gmail.com" && password === "User@123") {
+      errorMessage.style.display = "none";
+      window.location.href = "Page-1.html"; // Redirect to homepage
+      return false; // Prevent actual form submission
+    } else {
+      errorMessage.innerText = "Invalid Email or Password!";
+      errorMessage.style.display = "block";
+      return false;
+    }
+  }
+  </script>
+  
